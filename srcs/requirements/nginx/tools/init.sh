@@ -2,10 +2,25 @@
 
 echo "[NGINX] Starting initialization..."
 
-# NGINX 설정 테스트
-nginx -t
+MAX_TRY=30
+TRY=0
 
-# NGINX 포그라운드 모드로 시작
-nginx -g 'daemon off;'
+# WordPress 초기화 완료 대기
+while [ $TRY -lt $MAX_TRY ]; do
+    if [ -f /var/www/html/initialization_done.flag ]; then
+        echo "[NGINX] WordPress initialization detected."
+        break
+    fi
+    echo "[NGINX] Waiting for WordPress initialization... ($TRY/$MAX_TRY)"
+    TRY=$((TRY+1))
+    sleep 1
+done
 
-echo "[NGINX] Initialization completed."
+if [ $TRY -eq $MAX_TRY ]; then
+    echo "[NGINX] Timeout waiting for WordPress initialization"
+    exit 1
+fi
+
+# NGINX 시작
+echo "[NGINX] Starting NGINX..."
+exec "$@"

@@ -16,8 +16,9 @@ COPY ./conf/default.conf /etc/nginx/conf.d/default.conf
 COPY ./tools/init.sh /init.sh
 RUN chmod +x /init.sh
 
-# 443 포트 노출
+# 443 포트 노출(실제 기능은 없음 문서화 목적
 EXPOSE 443
 
 # init.sh 실행
-ENTRYPOINT [ "sh", "/init.sh" ] 
+ENTRYPOINT [ "sh", "/init.sh" ]
+CMD ["nginx", "-g", "daemon off;"]
