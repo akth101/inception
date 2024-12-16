@@ -53,15 +53,15 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/seongjko/data/wordpress
-      # device: /Users/goseongjun/data/wordpress
+      # device: /home/seongjko/data/wordpress
+      device: /Users/goseongjun/data/wordpress
   db_data:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /home/seongjko/data/mariadb
-      # device: /Users/goseongjun/data/mariadb
+      # device: /home/seongjko/data/mariadb
+      device: /Users/goseongjun/data/mariadb
 
 networks:
   inception:

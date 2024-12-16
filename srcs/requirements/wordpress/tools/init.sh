@@ -1,19 +1,14 @@
 #!/bin/bash
 
-echo "[WordPress] Starting initialization..."
-
 INIT_FLAG="/var/www/html/initialization_done.flag"
 
-# # PHP-FPM 관련 디렉토리 생성
-# if [ ! -d "/run/php" ]; then
-#     mkdir -p /run/php
-#     chown www-data:www-data /run/php
-# fi
-
-if [ ! -f "$INIT_FLAG" ]; then
-    mkdir /run/php
+# if [ ! -f "$INIT_FLAG" ]; then
+    echo "[WordPress] Starting initialization..."
+    mkdir -p /run/php
+    chown www-data:www-data /run/php
     chown -R www-data:www-data /var/www/html
-    mv wordpress/* /var/www/html
+    cp -r wordpress/* /var/www/html
+    rm -rf wordpress
     mv /var/www/html/wp-config-sample.php wp-config.php
     sed -i "s/database_name_here/$DB_NAME/" wp-config.php
     sed -i "s/username_here/$DB_USER/" wp-config.php
@@ -43,8 +38,7 @@ if [ ! -f "$INIT_FLAG" ]; then
     wp user create $USER_ID $USER_EMAIL --role=author --user_pass=$USER_PASSWORD --allow-root
     wp config shuffle-salts --allow-root
     touch "$INIT_FLAG"
-fi
+    echo "[WordPress] initialization completed."
+# fi
 
-
-echo "[WordPress] initialization completed."
 exec "$@"

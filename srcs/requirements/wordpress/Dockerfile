@@ -15,6 +15,7 @@ RUN apt-get update \
     && chmod +x wp-cli.phar \
     && mv wp-cli.phar /usr/local/bin/wp
 
+
 COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 COPY ./conf/php.ini /etc/php/7.4/fpm/php.ini
 COPY ./tools/init.sh init.sh
