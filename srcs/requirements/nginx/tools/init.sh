@@ -22,5 +22,6 @@ if [ $TRY -eq $MAX_TRY ]; then
 fi
 
 # NGINX 시작
-echo "[NGINX] Starting NGINX..."
+echo "[NGINX] initialization completed."
+
 exec "$@"

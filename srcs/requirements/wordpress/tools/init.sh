@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#!/bin/bash
+echo "[WordPress] Starting initialization..."
 
 INIT_FLAG="/var/www/html/initialization_done.flag"
 
@@ -38,5 +38,7 @@ if [ ! -f "$INIT_FLAG" ]; then
     wp config shuffle-salts --allow-root
     touch "$INIT_FLAG"
 fi
+
+echo "[WordPress] initialization completed."
 
 exec "$@"
