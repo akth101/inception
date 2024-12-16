@@ -1,7 +1,12 @@
 FROM debian:bullseye
 
 RUN apt-get update \
-    && apt-get install -y php-mysqli php-fpm mariadb-client wget curl \
+    && apt-get install -y \
+    php7.4-fpm \
+    php7.4-mysql \
+    mariadb-client \
+    wget \
+    curl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && wget https://wordpress.org/latest.tar.gz \
