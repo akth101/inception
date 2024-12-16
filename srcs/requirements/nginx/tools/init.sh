@@ -23,5 +23,5 @@ fi
 
 # NGINX 시작
 
-exec "$@"
 echo "[NGINX] initialization completed."
+exec "$@"

@@ -40,5 +40,5 @@ if [ ! -f "$INIT_FLAG" ]; then
 fi
 
 
-exec "$@"
 echo "[WordPress] initialization completed."
+exec "$@"

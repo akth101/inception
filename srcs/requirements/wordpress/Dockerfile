@@ -16,5 +16,5 @@ COPY ./tools/init.sh init.sh
 
 RUN chmod +x init.sh
 
-ENTRYPOINT [ "./init.sh" ]
+ENTRYPOINT [ "sh", "/init.sh" ]
 CMD ["php-fpm7.4", "-F"]

@@ -19,6 +19,6 @@ if [ ! -f "$INIT_FLAG" ]; then
     service mariadb stop
 fi
 
-exec "$@"
 echo "[MariaDB] Initialization completed."
+exec "$@"
 
