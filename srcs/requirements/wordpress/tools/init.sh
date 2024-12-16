@@ -11,7 +11,8 @@ WP_ROOT="/var/www/html"
 setup_wordpress() {
     mkdir -p /run/php
     chown -R www-data:www-data "$WP_ROOT"
-    mv wordpress/* "$WP_ROOT"
+    rm -rf /var/www/html/*
+    mv wordpress/* /var/www/html
     configure_wp_config
 }
 
