@@ -2,13 +2,13 @@
 COMPOSE_FILE = srcs/docker-compose.yml
 
 up:
-	# mkdir -p /home/seongjko/data/wordpress
-	# mkdir -p /home/seongjko/data/mariadb
-	# chmod 777 /home/seongjko/data
+	mkdir -p /home/seongjko/data/wordpress
+	mkdir -p /home/seongjko/data/mariadb
+	chmod 777 /home/seongjko/data
 
-	mkdir -p /Users/goseongjun/data/wordpress
-	mkdir -p /Users/goseongjun/data/mariadb
-	chmod 777 /Users/goseongjun/data
+	# mkdir -p /Users/goseongjun/data/wordpress
+	# mkdir -p /Users/goseongjun/data/mariadb
+	# chmod 777 /Users/goseongjun/data
 
 	docker compose -f $(COMPOSE_FILE) up -d --build
 	
@@ -40,7 +40,8 @@ clean:
 	docker compose -f $(COMPOSE_FILE) down --rmi all -v
 	docker volume prune -f
 	docker image prune -af
-	sudo rm -rf /Users/goseongjun/data
+	# sudo rm -rf /Users/goseongjun/data
+	sudo rm -rf /home/seongjko/data
 
 .PHONY: up stop stop-nginx stop-mariadb stop-wordpress \
 		start start-nginx start-mariadb start-wordpress \
