@@ -6,34 +6,34 @@ up:
 	mkdir -p /home/seongjko/data/mariadb
 	chmod 777 /home/seongjko/data
 
-	docker compose -f $(COMPOSE_FILE) up -d --build
+	docker-compose -f $(COMPOSE_FILE) up -d --build
 	
 stop:
-	docker compose -f $(COMPOSE_FILE) stop
+	docker-compose -f $(COMPOSE_FILE) stop
 
 stop-nginx:
-	docker compose -f $(COMPOSE_FILE) stop nginx
+	docker-compose -f $(COMPOSE_FILE) stop nginx
 
 stop-mariadb:
-	docker compose -f $(COMPOSE_FILE) stop mariadb
+	docker-compose -f $(COMPOSE_FILE) stop mariadb
 
 stop-wordpress:
-	docker compose -f $(COMPOSE_FILE) stop wordpress
+	docker-compose -f $(COMPOSE_FILE) stop wordpress
 
 start:
-	docker compose -f $(COMPOSE_FILE) start
+	docker-compose -f $(COMPOSE_FILE) start
 
 start-nginx:
-	docker compose -f $(COMPOSE_FILE) start nginx
+	docker-compose -f $(COMPOSE_FILE) start nginx
 
 start-mariadb:
-	docker compose -f $(COMPOSE_FILE) start mariadb
+	docker-compose -f $(COMPOSE_FILE) start mariadb
 
 start-wordpress:
-	docker compose -f $(COMPOSE_FILE) start wordpress
+	docker-compose -f $(COMPOSE_FILE) start wordpress
 
 clean:
-	docker compose -f $(COMPOSE_FILE) down --rmi all -v
+	docker-compose -f $(COMPOSE_FILE) down --rmi all -v
 	docker volume prune -f
 	docker image prune -af
 	# sudo rm -rf /Users/goseongjun/data
