@@ -52,6 +52,7 @@ services:
 
 volumes:
   wp_data:
+    name: wp_data
     driver: local
     driver_opts:
       type: none
@@ -59,6 +60,7 @@ volumes:
       device: /home/seongjko/data/
       # device: /Users/goseongjun/data/wordpress
   db_data:
+    name: db_data
     driver: local
     driver_opts:
       type: none
