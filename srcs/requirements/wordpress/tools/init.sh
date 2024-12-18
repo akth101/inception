@@ -2,7 +2,6 @@
 
 INIT_FLAG="/var/www/html/initialization_done.flag"
 
-# if [ ! -f "$INIT_FLAG" ]; then
     echo "[WordPress] Starting initialization..."
     mkdir -p /run/php
     chown www-data:www-data /run/php
@@ -39,6 +38,6 @@ INIT_FLAG="/var/www/html/initialization_done.flag"
     wp config shuffle-salts --allow-root
     touch "$INIT_FLAG"
     echo "[WordPress] initialization completed."
-# fi
+
 
 exec "$@"

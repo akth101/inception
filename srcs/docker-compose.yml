@@ -1,6 +1,5 @@
 version: '3'
 
-# docker-compose에서 실행할 컨테이너들을 정의하는 섹션
 services:
   mariadb:
     build: 
@@ -58,7 +57,6 @@ volumes:
       type: none
       o: bind
       device: /home/seongjko/data/wordpress
-      # device: /Users/goseongjun/data/wordpress
   db_data:
     name: db_data
     driver: local
@@ -66,7 +64,6 @@ volumes:
       type: none
       o: bind
       device: /home/seongjko/data/mariadb
-      # device: /Users/goseongjun/data/mariadb
 
 networks:
   inception:
