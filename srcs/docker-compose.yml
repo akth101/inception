@@ -64,7 +64,3 @@ volumes:
       type: none
       o: bind
       device: /home/seongjko/data/mariadb
-
-networks:
-  inception:
-    driver: bridge
