@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   mariadb:
     build: 
@@ -7,6 +5,8 @@ services:
       dockerfile: Dockerfile
     image: mariadb
     container_name: mariadb
+    networks:
+      - inception
     volumes:
       - db_data:/var/lib/mysql
     env_file:
@@ -19,6 +19,8 @@ services:
       dockerfile: Dockerfile
     image: wordpress
     container_name: wordpress
+    networks:
+      - inception
     volumes:
       - wp_data:/var/www/html
     env_file:
@@ -33,6 +35,8 @@ services:
       dockerfile: Dockerfile
     image: nginx
     container_name: nginx
+    networks:
+      - inception
     volumes:
       - wp_data:/var/www/html
     ports:
@@ -42,6 +46,10 @@ services:
     depends_on:
       - wordpress
     restart: always
+
+networks:
+  inception:
+    name: inception
 
 volumes:
   wp_data:
